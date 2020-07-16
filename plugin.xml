@@ -109,6 +109,8 @@
 
         <preference name="ANDROID_SUPPORT_V7_VERSION" default="27.+"/>
         <framework src="com.android.support:appcompat-v7:$ANDROID_SUPPORT_V7_VERSION" />
+        <!-- <framework src="com.github.tizisdeepan:gallerypicker:1.0.1" /> -->
+        <framework src="com.opensooq.supernova:gligar:1.1.0" />
 
         <source-file src="src/android/com/synconset/ImagePicker/ImagePicker.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/ImagePicker/FakeR.java" target-dir="src/com/synconset" />
@@ -151,7 +153,7 @@
         <framework src="src/android/ignorelinterrors.gradle" custom="true" type="gradleReference"/>
         <framework src="src/android/androidtarget.gradle" custom="true" type="gradleReference"/>
     </platform>
-  
+
     <!-- browser -->
     <platform name="browser">
       <config-file parent="/*" target="config.xml">
@@ -159,7 +161,7 @@
   						<param name="browser-package" value="ImagePicker"/>
   				</feature>
   		</config-file>
-      
+
       <!-- Required for browserify: we always link module below as there is conditional reference
       to this module from requestFileSystem and resolveLocalFileSystemURI modules. -->
       <js-module src="www/browser/isChrome.js" name="isChrome">
