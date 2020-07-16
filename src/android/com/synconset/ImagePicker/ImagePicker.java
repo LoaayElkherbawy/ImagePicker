@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -20,8 +22,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.opensooq.supernova.gligar.GligarPicker;
 
 public class ImagePicker extends CordovaPlugin {
@@ -48,7 +50,7 @@ public class ImagePicker extends CordovaPlugin {
 
     } else if (ACTION_GET_PICTURES.equals(action)) {
       final JSONObject params = args.getJSONObject(0);
-      final Intent imagePickerIntent = new Intent(cordova.getActivity(), PickerActivity.class);
+      // final Intent imagePickerIntent = new Intent(cordova.getActivity(), PickerActivity.class);
       int max = 20;
       int desiredWidth = 0;
       int desiredHeight = 0;
@@ -70,8 +72,8 @@ public class ImagePicker extends CordovaPlugin {
         outputType = params.getInt("outputType");
       }
 
-      GligarPicker().limit(max).disableCamera(false).cameraDirect(false).requestCode(PICKER_REQUEST_CODE)
-      .withActivity(this).show();
+      new GligarPicker().limit(max).disableCamera(true).requestCode(this.PICKER_REQUEST_CODE)
+      .withActivity(this.cordova.getActivity()).show();
       // imagePickerIntent.putExtra("IMAGES_LIMIT", max);
       // imagePickerIntent.putExtra("WIDTH", desiredWidth);
       // imagePickerIntent.putExtra("HEIGHT", desiredHeight);
@@ -133,7 +135,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
     String[] pathsList= data.getExtras().getStringArray(GligarPicker.IMAGES_RESULT);
     List<String> l = Arrays.asList(pathsList);
     ArrayList<String> fileNames = new ArrayList<String>(l);
-    
+
     JSONArray res = new JSONArray(fileNames);
     callbackContext.success(res);
 
