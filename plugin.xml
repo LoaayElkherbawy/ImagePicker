@@ -104,6 +104,7 @@
 
         <preference name="ANDROID_SUPPORT_V7_VERSION" default="27.+"/>
         <framework src="com.android.support:appcompat-v7:$ANDROID_SUPPORT_V7_VERSION" />
+        <framework src="com.google.android.material:material:1.2.0-alpha02" />
         <!-- <framework src="com.opensooq.supernova:gligar:1.1.0" /> -->
         <framework src="src/android/gligar.gradle" custom="true" type="gradleReference" />
         <resource-file src="src/android/Library/gligar-release.aar" target="libs/gligar-release.aar" />

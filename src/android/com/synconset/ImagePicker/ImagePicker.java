@@ -103,15 +103,16 @@ public class ImagePicker extends CordovaPlugin {
         outputType = params.getInt("outputType");
       }
 
-      // new GligarPicker().limit(max).disableCamera(true).requestCode(this.PICKER_REQUEST_CODE)
-      // .withActivity(cordovaAct).show();
-      final Intent imagePickerIntent = new Intent(cordova.getActivity(),ImagePickerActivity.class);
-      imagePickerIntent.putExtra("limit", max);
-      imagePickerIntent.putExtra("camera_direct", false);
-      // if (!cameraDirect) {
-      imagePickerIntent.putExtra("disable_camera", true);
-      // }
-      cordova.startActivityForResult(this, imagePickerIntent, PICKER_REQUEST_CODE);
+      cordova.setActivityResultCallback (this);
+      new GligarPicker().limit(max).disableCamera(true).requestCode(this.PICKER_REQUEST_CODE)
+      .withActivity(cordova.getActivity()).show();
+      // final Intent imagePickerIntent = new Intent(cordova.getActivity(),ImagePickerActivity.class);
+      // imagePickerIntent.putExtra("limit", max);
+      // imagePickerIntent.putExtra("camera_direct", false);
+      // // if (!cameraDirect) {
+      // imagePickerIntent.putExtra("disable_camera", true);
+      // // }
+      // cordova.startActivityForResult(this, imagePickerIntent, PICKER_REQUEST_CODE);
       return true;
     }
     return false;
