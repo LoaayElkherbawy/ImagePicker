@@ -104,7 +104,7 @@ public class ImagePicker extends CordovaPlugin {
       }
 
       cordova.setActivityResultCallback (this);
-      new GligarPicker().limit(max).disableCamera(true).requestCode(this.PICKER_REQUEST_CODE)
+      new GligarPicker().limit(max).disableCamera(false).requestCode(this.PICKER_REQUEST_CODE)
       .withActivity(cordova.getActivity()).show();
       // final Intent imagePickerIntent = new Intent(cordova.getActivity(),ImagePickerActivity.class);
       // imagePickerIntent.putExtra("limit", max);

@@ -6,7 +6,7 @@ repositories{
 }
 
 dependencies {
-   compile(name:'gligar', ext:'aar')
+   compile(name:'gligar-release', ext:'aar')
 }
 
 android {
